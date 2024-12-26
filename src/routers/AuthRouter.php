@@ -1,5 +1,6 @@
 <?php
-require_once '.../src/controllers/AuthentificationController.php';
+namespace App\Routers;
+
 class AuthRouter extends AuthentificationController {
     private $url;
 
@@ -24,7 +25,9 @@ class AuthRouter extends AuthentificationController {
                 },
             ],
             'PUT' => [
-                '/update.user' =>
+                '/update.user' =>function() {
+
+                }
             ]
         ];
     }
@@ -38,8 +41,8 @@ class AuthRouter extends AuthentificationController {
                 'error' => true,
                 'message' => 'Маршрут не найден',
                 'code' => 404,
-                'method' => $this->routes["$this->route"][],
-                'uri' => $requestUri
+                'method' => $this->requestMethod,
+                'uri' => $this->url
             ]);
         }
     }

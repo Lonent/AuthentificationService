@@ -1,12 +1,12 @@
 <?php
-
+namespace App\Models;
 class Database {
     protected $host;
     protected $dbname;
     protected $username;
     protected $password;
 
-    private $pdo
+    private $pdo;
 
     function __construct($host, $dbname, $username, $password)
     {
@@ -41,7 +41,7 @@ class Database {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($data);
             return $this->pdo->lastInsertId();
-        } catch {
+        } catch(\PDOException $exception) {
             return false;
         }
     }
@@ -60,7 +60,7 @@ class Database {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($conditions);
             return $stmt->fetchAll();
-        } catch(PDOException $exception) {
+        } catch(\PDOException $exception) {
             return false;
         }
     }
@@ -86,7 +86,7 @@ class Database {
         try {
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($params);
-        } catch(PDOException $exception) {
+        } catch(\PDOException $exception) {
             return false;
         }
     }
@@ -102,7 +102,7 @@ class Database {
         try {
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($conditions);
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             return false;
         }
     }
