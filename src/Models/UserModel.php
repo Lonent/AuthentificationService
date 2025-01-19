@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-use App\Models\DatabaseModel;
+use App\temp_dir\DatabaseModel;
 
 class UserModel {
 
